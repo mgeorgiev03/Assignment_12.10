@@ -1,4 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
+using MovieRatingApp.DataAccess;
+using MovieRatingApp.DataAccess.Interfaces;
+using MovieRatingApp.Model.Services;
+using MovieRatingApp.Model.Services.IServices;
 
 namespace MovieRatingApp;
 
@@ -14,6 +18,10 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+		builder.Services.AddSingleton<IDBConnection, DBConnection>();
+		builder.Services.AddSingleton<IMovieService, MovieService>();
+
 
 #if DEBUG
 		builder.Logging.AddDebug();
