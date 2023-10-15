@@ -1,12 +1,6 @@
-﻿using CloudKit;
-using MovieRatingApp.DataAccess.Interfaces;
+﻿using MovieRatingApp.DataAccess.Interfaces;
 using MovieRatingApp.Model.Services.IServices;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieRatingApp.Model.Services
 {
@@ -18,36 +12,90 @@ namespace MovieRatingApp.Model.Services
         public MovieService(IDBConnection dB)
         {
             _db = dB;
+            //check later
+            //_db.Connect();
         }
 
-        public async Task GetDatabase()
+        public async Task<Guid> Create(Movie movie)
         {
-            _connection = await _db.Connect();
+            try
+            {
+                _connection = await _db.Connect();
+
+                //change
+                var result = await _connection.InsertAsync(movie, typeof(Movie));
+
+                //look up toast
+
+                //if (result > 0)
+                //{
+                //    await Toast.MakeText($"Employee '{movie.Title}' successfully saved!").Show();
+                //    return true;
+                //}
+                //else
+                //{
+                //    await Toast.Make("Sorry, we couldn't save your employee. Please try again.").Show();
+                //    return false;
+                //}
+
+                return movie.Id;
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
-        public Task<Guid> Create(Movie movie)
+        public async Task Delete(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _db.Connect();
+                await _connection.Table<Movie>().DeleteAsync(m => m.Id == id);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
-        public Task Delete(Guid id)
+        public async Task<Movie> Get(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _db.Connect();
+                return await _connection.GetAsync<Movie>(id); 
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
-        public Task<Movie> Get(Guid id)
+        public async Task<ICollection<Movie>> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _db.Connect();
+                return await _connection.Table<Movie>().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
-        public Task<ICollection<Movie>> GetAll()
+        public async Task Update(Movie movie)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Guid> Update(Movie movie)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                await _db.Connect();
+                await _connection.UpdateAsync(movie, typeof(Movie));
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
     }
 }

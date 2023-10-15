@@ -1,11 +1,6 @@
 ﻿using MovieRatingApp.DataAccess.Interfaces;
 using MovieRatingApp.Model;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieRatingApp.DataAccess
 {
@@ -20,7 +15,13 @@ namespace MovieRatingApp.DataAccess
                 string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MovieRatingApp.db3");
                 _connection = new SQLiteAsyncConnection(dbPath);
 
-                var result = await _connection.CreateTableAsync<Movie>();
+                //change 
+                var result = new CreateTableResult();
+
+                if (!_connection.Table<Movie>().Equals(null))
+                    result = await _connection.CreateTableAsync<Movie>();
+
+
                 return _connection;
             }
             catch (Exception ex)
