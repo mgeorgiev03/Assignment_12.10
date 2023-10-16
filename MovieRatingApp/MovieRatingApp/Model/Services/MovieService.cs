@@ -1,101 +1,41 @@
-﻿using MovieRatingApp.DataAccess.Interfaces;
-using MovieRatingApp.Model.Services.IServices;
+﻿using MovieRatingApp.Model.Services.IServices;
 using SQLite;
 
 namespace MovieRatingApp.Model.Services
 {
     internal class MovieService : IMovieService
     {
-        private readonly IDBConnection _db;
-        private SQLiteAsyncConnection _connection;
+        private SQLiteConnection _connection;
+        private readonly string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MovieRatingApp.db3");
 
-        public MovieService(IDBConnection dB)
+        public MovieService()
         {
-            _db = dB;
-            //check later
-            //_db.Connect();
+            _connection = new SQLiteConnection(dbPath);
         }
 
-        public async Task<Guid> Create(Movie movie)
+        public void Create(Movie movie)
         {
-            try
-            {
-                _connection = await _db.Connect();
-
-                //change
-                var result = await _connection.InsertAsync(movie, typeof(Movie));
-
-                //look up toast
-
-                //if (result > 0)
-                //{
-                //    await Toast.MakeText($"Employee '{movie.Title}' successfully saved!").Show();
-                //    return true;
-                //}
-                //else
-                //{
-                //    await Toast.Make("Sorry, we couldn't save your employee. Please try again.").Show();
-                //    return false;
-                //}
-
-                return movie.Id;
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
+            _connection.Insert(movie, typeof(Movie));
         }
 
-        public async Task Delete(Guid id)
+        public void Delete(Guid id)
         {
-            try
-            {
-                await _db.Connect();
-                await _connection.Table<Movie>().DeleteAsync(m => m.Id == id);
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
+            _connection.Table<Movie>().Delete(m => m.Id == id);
         }
 
-        public async Task<Movie> Get(Guid id)
+        public Movie Get(Guid id)
         {
-            try
-            {
-                await _db.Connect();
-                return await _connection.GetAsync<Movie>(id); 
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
+            return _connection.Get<Movie>(id);
         }
 
-        public async Task<ICollection<Movie>> GetAll()
+        public ICollection<Movie> GetAll()
         {
-            try
-            {
-                await _db.Connect();
-                return await _connection.Table<Movie>().ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
+            return _connection.Table<Movie>().ToList();
         }
 
-        public async Task Update(Movie movie)
+        public void Update(Movie movie)
         {
-            try
-            {
-                await _db.Connect();
-                await _connection.UpdateAsync(movie, typeof(Movie));
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
+            _connection.Update(movie, typeof(Movie));
         }
     }
 }

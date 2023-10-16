@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:MovieRatingApp.ViewModels"
+             x:Class="MovieRatingApp.Pages.AddPage"
+             Title="AddPage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:AddViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding Navigation}"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <Entry Placeholder="Title" BindingContext="{Binding NewMovie.Title}"/>
+        <Entry Placeholder="Rating" BindingContext="{Binding NewMovie.Rating}"/>
+    </StackLayout>
+
+
+</ContentPage>
