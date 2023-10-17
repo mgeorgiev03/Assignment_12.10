@@ -14,8 +14,9 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <Entry Placeholder="Title" BindingContext="{Binding NewMovie.Title}"/>
-        <Entry Placeholder="Rating" BindingContext="{Binding NewMovie.Rating}"/>
+        <Entry Placeholder="Title" Text="{Binding NewMovie.Title}"/>
+        <Entry Placeholder="Rating" Text="{Binding NewMovie.Rating}"/>
+        <Button Text="Add" Command="{Binding AddNewMovie}"/>
     </StackLayout>
 
 

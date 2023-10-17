@@ -1,4 +1,6 @@
-﻿namespace MovieRatingApp.Model.Services.IServices
+﻿using System.Collections.ObjectModel;
+
+namespace MovieRatingApp.Model.Services.IServices
 {
     public interface IMovieService
     {
@@ -6,6 +8,6 @@
         void Update(Movie movie);
         void Delete(Guid id);
         Movie Get(Guid id);
-        ICollection<Movie> GetAll();
+        ObservableCollection<Movie> GetAll();
     }
 }

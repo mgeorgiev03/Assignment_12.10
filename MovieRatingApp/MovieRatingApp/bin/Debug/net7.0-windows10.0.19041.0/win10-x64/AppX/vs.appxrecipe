@@ -29,25 +29,25 @@
     <AppXManifest Include="C:\Users\maxim\Desktop\Assignment_12.10\MovieRatingApp\MovieRatingApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-10-16T20:52:50.794</Modified>
+      <Modified>2023-10-17T08:59:13.090</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\maxim\Desktop\Assignment_12.10\MovieRatingApp\MovieRatingApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-10-16T20:52:50.433</Modified>
+      <Modified>2023-10-17T08:54:47.967</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maxim\Desktop\Assignment_12.10\MovieRatingApp\MovieRatingApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\MovieRatingApp.runtimeconfig.json">
       <PackagePath>MovieRatingApp.runtimeconfig.json</PackagePath>
-      <Modified>2023-10-16T19:37:13.439</Modified>
+      <Modified>2023-10-17T08:31:54.244</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maxim\Desktop\Assignment_12.10\MovieRatingApp\MovieRatingApp\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\MovieRatingApp.dll">
       <PackagePath>MovieRatingApp.dll</PackagePath>
-      <Modified>2023-10-16T20:52:49.257</Modified>
+      <Modified>2023-10-17T08:59:11.373</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maxim\Desktop\Assignment_12.10\MovieRatingApp\MovieRatingApp\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MovieRatingApp.exe</PackagePath>
-      <Modified>2023-10-16T20:52:49.275</Modified>
+      <Modified>2023-10-17T08:59:11.385</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maxim\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.7\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -943,7 +943,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\maxim\Desktop\Assignment_12.10\MovieRatingApp\MovieRatingApp\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\MovieRatingApp.deps.json">
       <PackagePath>MovieRatingApp.deps.json</PackagePath>
-      <Modified>2023-10-16T20:52:50.674</Modified>
+      <Modified>2023-10-17T08:59:12.913</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.86\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

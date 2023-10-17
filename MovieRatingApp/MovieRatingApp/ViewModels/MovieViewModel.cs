@@ -14,6 +14,7 @@ namespace MovieRatingApp.ViewModels
         {
             movieService = new MovieService();
             Navigation = new Command(async () => await Navigate());
+            LoadMovies();
         }
 
         private ObservableCollection<Movie> movies;
@@ -23,8 +24,10 @@ namespace MovieRatingApp.ViewModels
             set => movies = value;
         }
 
-        public ICommand Navigation;
+        void LoadMovies() => Movies = movieService.GetAll();
 
-        async Task Navigate() => await Shell.Current.Navigation.PushAsync(new AddPage(), true);
+        public ICommand Navigation { get; set; }
+
+        async Task Navigate() => await Shell.Current.Navigation.PushAsync(new AddPage());
     }
 }

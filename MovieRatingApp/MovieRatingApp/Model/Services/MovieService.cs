@@ -1,5 +1,6 @@
 ﻿using MovieRatingApp.Model.Services.IServices;
 using SQLite;
+using System.Collections.ObjectModel;
 
 namespace MovieRatingApp.Model.Services
 {
@@ -28,9 +29,17 @@ namespace MovieRatingApp.Model.Services
             return _connection.Get<Movie>(id);
         }
 
-        public ICollection<Movie> GetAll()
+        public ObservableCollection<Movie> GetAll()
         {
-            return _connection.Table<Movie>().ToList();
+            ObservableCollection<Movie> movies = new ObservableCollection<Movie>();
+            List<Movie> moviesInDb = _connection.Table<Movie>().ToList();
+
+            foreach (var item in moviesInDb)
+            {
+                movies.Add(item);
+            }
+;           
+            return movies;
         }
 
         public void Update(Movie movie)
