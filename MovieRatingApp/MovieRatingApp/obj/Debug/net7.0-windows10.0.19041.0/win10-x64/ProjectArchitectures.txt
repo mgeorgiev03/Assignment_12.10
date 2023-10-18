@@ -1,1 +1,0 @@
-C:\Users\maxim\Desktop\Assignment_12.10\MovieRatingApp\MovieRatingApp\MovieRatingApp.csproj;x64

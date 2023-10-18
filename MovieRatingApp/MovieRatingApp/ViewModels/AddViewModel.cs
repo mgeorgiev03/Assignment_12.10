@@ -8,25 +8,22 @@ namespace MovieRatingApp.ViewModels
 {
     public class AddViewModel : BindableObject
     {
-        private IMovieService movieService;
+        private MovieService movieService;
         public AddViewModel()
         {
             NewMovie = new Movie();
+            NewMovie.Id = Guid.NewGuid();
             movieService = new MovieService();
-            Navigation = new Command(async () => await Navigate());
-            AddNewMovie = new Command(Add);
+            AddNewMovie = new Command(async () => await Add());
         }
 
         public Movie NewMovie { get; set; }
 
         public ICommand AddNewMovie { get; set; }
-        public void Add()
+        public async Task Add()
         {
-            NewMovie.Id = Guid.NewGuid();
-            movieService.Create(NewMovie);
+            await movieService.Create(NewMovie);
+            await Shell.Current.Navigation.PushAsync(new MainPage(), true);
         }
-
-        public ICommand Navigation { get; set; }
-        async Task Navigate() => await Shell.Current.Navigation.PushAsync(new MainPage(), true);
     }
 }

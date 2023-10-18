@@ -4,35 +4,37 @@ using System.Collections.ObjectModel;
 
 namespace MovieRatingApp.Model.Services
 {
-    internal class MovieService : IMovieService
+    internal class MovieService //: IMovieService
     {
-        private SQLiteConnection _connection;
+        private SQLiteAsyncConnection _connection;
         private readonly string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MovieRatingApp.db3");
 
         public MovieService()
         {
-            _connection = new SQLiteConnection(dbPath);
+            _connection = new SQLiteAsyncConnection(dbPath);
         }
 
-        public void Create(Movie movie)
+        public async Task Create(Movie movie)
         {
-            _connection.Insert(movie, typeof(Movie));
+            await _connection.InsertAsync(movie, typeof(Movie));
         }
 
-        public void Delete(Guid id)
+        public async Task Delete(Guid id)
         {
-            _connection.Table<Movie>().Delete(m => m.Id == id);
+            await _connection.Table<Movie>().DeleteAsync(m => m.Id == id);
         }
 
-        public Movie Get(Guid id)
+        public async Task<Movie> Get(Guid id)
         {
-            return _connection.Get<Movie>(id);
+            return await _connection.GetAsync<Movie>(id);
         }
 
         public ObservableCollection<Movie> GetAll()
         {
+            SQLiteConnection connection = new SQLiteConnection(dbPath);
             ObservableCollection<Movie> movies = new ObservableCollection<Movie>();
-            List<Movie> moviesInDb = _connection.Table<Movie>().ToList();
+            connection.CreateTable<Movie>();
+            List<Movie> moviesInDb = connection.Table<Movie>().ToList();
 
             foreach (var item in moviesInDb)
             {
@@ -42,9 +44,9 @@ namespace MovieRatingApp.Model.Services
             return movies;
         }
 
-        public void Update(Movie movie)
+        public async Task Update(Movie movie)
         {
-            _connection.Update(movie, typeof(Movie));
+            await _connection.UpdateAsync(movie, typeof(Movie));
         }
     }
 }

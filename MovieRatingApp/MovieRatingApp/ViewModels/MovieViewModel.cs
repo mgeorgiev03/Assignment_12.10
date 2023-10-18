@@ -9,7 +9,7 @@ namespace MovieRatingApp.ViewModels
 {
     public class MovieViewModel : BindableObject
     {
-        private readonly IMovieService movieService;
+        private readonly MovieService movieService;
         public MovieViewModel()
         {
             movieService = new MovieService();
@@ -24,8 +24,10 @@ namespace MovieRatingApp.ViewModels
             set => movies = value;
         }
 
-        void LoadMovies() => Movies = movieService.GetAll();
-
+        void LoadMovies()
+        {
+            Movies = movieService.GetAll();
+        }
         public ICommand Navigation { get; set; }
 
         async Task Navigate() => await Shell.Current.Navigation.PushAsync(new AddPage());

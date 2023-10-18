@@ -9,10 +9,6 @@
         <viewmodels:AddViewModel/>
     </ContentPage.BindingContext>
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding Navigation}"/>
-    </ContentPage.ToolbarItems>
-
     <StackLayout>
         <Entry Placeholder="Title" Text="{Binding NewMovie.Title}"/>
         <Entry Placeholder="Rating" Text="{Binding NewMovie.Rating}"/>

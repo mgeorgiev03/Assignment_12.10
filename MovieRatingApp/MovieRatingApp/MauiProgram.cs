@@ -19,7 +19,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		builder.Services.AddSingleton<IMovieService, MovieService>();
+		builder.Services.AddSingleton<MovieService>();
 
 		builder.Services.AddTransient<MovieViewModel>();
 		builder.Services.AddTransient<AddViewModel>();

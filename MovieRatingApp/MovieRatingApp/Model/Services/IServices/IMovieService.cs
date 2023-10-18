@@ -4,10 +4,10 @@ namespace MovieRatingApp.Model.Services.IServices
 {
     public interface IMovieService
     {
-        void Create(Movie movie);
-        void Update(Movie movie);
-        void Delete(Guid id);
-        Movie Get(Guid id);
-        ObservableCollection<Movie> GetAll();
+        Task Create(Movie movie);
+        Task Update(Movie movie);
+        Task Delete(Guid id);
+        Task<Movie> Get(Guid id);
+        Task<ObservableCollection<Movie>> GetAll();
     }
 }
