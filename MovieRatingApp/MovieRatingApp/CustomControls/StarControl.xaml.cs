@@ -29,11 +29,10 @@ public partial class StarControl : ContentView
         propertyChanged: OnButtonColorChanged);
 
 
-    private static async void OnStarCountChanged(BindableObject bindable, object oldValue, object newValue)
+    private static void OnStarCountChanged(BindableObject bindable, object oldValue, object newValue)
     {
         var control = (StarControl)bindable;
         control.StarCount = (int)newValue;
-        await Shell.Current.DisplayAlert(" ", " ", control.StarCount.ToString());
     }
 
 
@@ -48,33 +47,52 @@ public partial class StarControl : ContentView
         InitializeComponent();
     }
 
-    private void Buton_Clicked(object sender, EventArgs e)
+    private void First_Clicked(object sender, EventArgs e)
     {
         StarCount = 1;
-        StarColor = Colors.Gold;
+        FillButtons(sender);
     }
 
     private void Second_Clicked(object sender, EventArgs e)
     {
         StarCount = 2;
-        StarColor = Colors.Gold;
+        FillButtons(sender);
     }
 
     private void Third_Clicked(object sender, EventArgs e)
     {
         StarCount = 3;
-        StarColor = Colors.Gold;
+        FillButtons(sender);
     }
 
     private void Fourth_Clicked(object sender, EventArgs e)
     {
         StarCount = 4;
-        StarColor = Colors.Gold;
+        FillButtons(sender);
     }
 
     private void Fifth_Clicked(object sender, EventArgs e)
     {
         StarCount = 5;
-        StarColor = Colors.Gold;
+        FillButtons(sender);
+    }
+
+    private void FillButtons(object sender)
+    {
+        for (int i = 1; i <= StarCount; i++)
+        {
+            Button button = (Button)sender;
+            button = (Button)button.FindByName(i.ToString());
+            button.BackgroundColor = StarColor;
+            button.BindingContext = BackgroundColor;
+        }
+
+        for (int i = 1; i <= 5 - StarCount; i++) 
+        {
+            Button button = (Button)sender;
+            button = (Button)button.FindByName((StarCount + i).ToString());
+            button.BackgroundColor = Colors.DarkGray;
+            button.BindingContext = BackgroundColor;
+        }
     }
 }

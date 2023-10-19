@@ -15,7 +15,7 @@
         <Entry Placeholder="Title" Text="{Binding NewMovie.Title}"/>
 
         <controls:StarControl 
-            StarColor="DarkGray" 
+            StarColor="Gold" 
             StarCount="{Binding Rating}"/>
 
 

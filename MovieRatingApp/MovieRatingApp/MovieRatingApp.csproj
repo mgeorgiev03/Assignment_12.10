@@ -54,6 +54,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="CustomControls\StarButton.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="CustomControls\StarControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -64,6 +67,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Images\" />
+	  <Folder Include="PNGs\" />
 	</ItemGroup>
 
 </Project>

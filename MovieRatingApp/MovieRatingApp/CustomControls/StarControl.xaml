@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customcontrols="clr-namespace:MovieRatingApp.CustomControls"
              x:Class="MovieRatingApp.CustomControls.StarControl">
 
     <ContentView.ControlTemplate>
@@ -8,11 +9,12 @@
 
             <Frame>
                 <HorizontalStackLayout>
-                    <Button x:Name="1" BackgroundColor="{TemplateBinding StarColor}" Clicked="Buton_Clicked"/>
-                    <Button x:Name="Second" BackgroundColor="{TemplateBinding StarColor}" Clicked="Second_Clicked"/>
-                    <Button x:Name="Third" BackgroundColor="{TemplateBinding StarColor}" Clicked="Third_Clicked"/>
-                    <Button x:Name="Fourth" BackgroundColor="{TemplateBinding StarColor}" Clicked="Fourth_Clicked"/>
-                    <Button x:Name="Fifth" BackgroundColor="{TemplateBinding StarColor}" Clicked="Fifth_Clicked"/>
+                    <!--<customcontrols:StarButton ImageSource="Images/star.png"/>-->
+                    <Button x:Name="1" BackgroundColor="DarkGray" Clicked="First_Clicked"/>
+                    <Button x:Name="2" BackgroundColor="DarkGray" Clicked="Second_Clicked"/>
+                    <Button x:Name="3" BackgroundColor="DarkGray" Clicked="Third_Clicked"/>
+                    <Button x:Name="4" BackgroundColor="DarkGray" Clicked="Fourth_Clicked"/>
+                    <Button x:Name="5" BackgroundColor="DarkGray" Clicked="Fifth_Clicked"/>
                     <ContentPresenter/>
                 </HorizontalStackLayout>
                 
