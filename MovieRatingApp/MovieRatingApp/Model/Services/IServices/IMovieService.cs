@@ -8,6 +8,6 @@ namespace MovieRatingApp.Model.Services.IServices
         Task Update(Movie movie);
         Task Delete(Guid id);
         Task<Movie> Get(Guid id);
-        Task<ObservableCollection<Movie>> GetAll();
+        ObservableCollection<Movie> GetAll();
     }
 }

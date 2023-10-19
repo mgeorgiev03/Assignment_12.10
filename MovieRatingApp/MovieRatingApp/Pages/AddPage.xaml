@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:MovieRatingApp.ViewModels"
+             xmlns:controls="clr-namespace:MovieRatingApp.CustomControls"
              x:Class="MovieRatingApp.Pages.AddPage"
              Title="AddPage">
 
@@ -10,10 +11,16 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
+
         <Entry Placeholder="Title" Text="{Binding NewMovie.Title}"/>
-        <Entry Placeholder="Rating" Text="{Binding NewMovie.Rating}"/>
+
+        <controls:StarControl 
+            StarColor="DarkGray" 
+            StarCount="{Binding Rating}"/>
+
+
+
         <Button Text="Add" Command="{Binding AddNewMovie}"/>
+        
     </StackLayout>
-
-
 </ContentPage>

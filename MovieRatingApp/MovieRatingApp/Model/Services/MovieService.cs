@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace MovieRatingApp.Model.Services
 {
-    internal class MovieService //: IMovieService
+    internal class MovieService : IMovieService
     {
         private SQLiteAsyncConnection _connection;
         private readonly string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MovieRatingApp.db3");

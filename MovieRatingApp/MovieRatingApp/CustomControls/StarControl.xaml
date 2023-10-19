@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MovieRatingApp.CustomControls.StarControl">
+
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+
+            <Frame>
+                <HorizontalStackLayout>
+                    <Button x:Name="1" BackgroundColor="{TemplateBinding StarColor}" Clicked="Buton_Clicked"/>
+                    <Button x:Name="Second" BackgroundColor="{TemplateBinding StarColor}" Clicked="Second_Clicked"/>
+                    <Button x:Name="Third" BackgroundColor="{TemplateBinding StarColor}" Clicked="Third_Clicked"/>
+                    <Button x:Name="Fourth" BackgroundColor="{TemplateBinding StarColor}" Clicked="Fourth_Clicked"/>
+                    <Button x:Name="Fifth" BackgroundColor="{TemplateBinding StarColor}" Clicked="Fifth_Clicked"/>
+                    <ContentPresenter/>
+                </HorizontalStackLayout>
+                
+            </Frame>
+            
+
+            
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+    
+    
+</ContentView>
